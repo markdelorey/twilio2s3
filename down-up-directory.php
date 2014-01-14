@@ -8,6 +8,14 @@ require 'config.php';
 // Instantiate the twilio client
 $twilio	=	new Services_Twilio(TW_ACCOUNT_SID, TW_SECRET_KEY);
 
+use Aws\S3\S3Client;
+
+// Instantiate the S3 client with your AWS credentials
+$s3 = S3Client::factory(array(
+	'key'    => AWS_ACCESS_KEY,
+	'secret' => AWS_SECRET_KEY,
+));
+
 // Create an array to hold the recordings map
 $recordings	=	array();
 
@@ -27,9 +35,13 @@ if( count($twilio->account->recordings->getPage(0,50)) > 0 ) {
 	
 }
 
+$s3->registerStreamWrapper();
+
+$s3->uploadDirectory('/Applications/MAMP/htdocs/twilio2s3/audio',S3_BUCKET_NAME);
+
 $ex_time_end	=	microtime(true);
 $execution_time = round($ex_time_end - $ex_time_start,2) . 's';
 
-echo "Execution time: $execution_time\n"; // 116s
+echo "Execution time: $execution_time\n"; // 158s
 
 ?>
