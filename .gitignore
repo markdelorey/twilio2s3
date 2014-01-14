@@ -1,0 +1,5 @@
+.DS_Store
+audio/
+composer.phar
+config.php
+vendor/

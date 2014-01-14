@@ -1,0 +1,23 @@
+{
+	"name": "markdelorey/twilio2s3",
+	"version": "0.1",
+	"description": "Move audio files from Twilio to S3 and output new URLs mapped to CallSIDs",
+	"license": "Apache 2",
+	"authors": [
+		{
+			"name": "Mark Delorey",
+			"email": "mark.delorey@gmail.com"
+		}
+	],
+	"require": {
+		"twilio/sdk": "dev-master",
+		"aws/aws-sdk-php": "dev-master",
+		"symfony/dependency-injection": "2.5.*@dev",
+		"symfony/http-kernel": "2.5.*@dev",
+		"ext-apc": "*",
+		"doctrine/cache": "1.4.*@dev",
+		"symfony/yaml": "2.5.*@dev",
+		"monolog/monolog": "1.7.*@dev"
+		
+	}
+}
